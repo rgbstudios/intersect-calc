@@ -1,0 +1,168 @@
+<!doctype html>
+<!--
+1.0.2
+todo: add tss and r^2 and r-->	
+<html>
+<head>
+<title>Intersection Calc</title>
+
+<meta charset="utf-8">
+<meta name="title=" content="Intersection Calc">
+<meta name="robots" content="index, follow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Use Intersection Calc to calculate the intersection point of lines">
+<meta name="keywords" content="intersect, intersection, line, calculator, calc">
+<meta id="metaColor1" name="theme-color" content="#ccc">
+<meta id="metaColor2" name="msapplication-navbutton-color" content="#ccc">
+<meta id="metaColor3" name="apple-mobile-web-app-status-bar-style" content="#ccc">
+
+<link rel="shortcut icon" type="image/png" href="favicon.png"/>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link href="https://use.fontawesome.com/releases/v5.0.4/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>  
+
+<style>
+ * {
+ 	text-align: center !important;
+} ::selection {
+	background: #999;
+	color: #fff;
+}::-moz-selection {
+	background: #999;
+	color: #fff;
+}
+
+img {
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.wrapper:hover .fa-stack{
+    transition: .8s;
+    transform: rotate(180deg);
+}
+.wrapper{
+    display: inline-block;
+}
+
+#answerPara {
+	font-size: 150%;
+} .display-4 {
+	font-size: 200%;
+}
+
+#logo {
+	width: 64px;
+} #logo:hover {
+    transition: .8s;
+    transform: rotateX(360deg);
+}
+
+
+@media screen and (max-width: 768px) {
+  .alert {
+    visibility: hidden;
+    clear: both;
+    display: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<br>
+<h3 class="display-4">
+<img id="logo" src="intersect-icon-simple.svg">
+Line Intersection Calculator
+<button class="btn btn-default btn-sm" id="refresh" title="clear inputs" onclick="$(':input').val('1');">
+<div class="wrapper">
+<span class="fa-stack fa-2x">
+<i class="fa fa-sync-alt"></i>
+</span>
+</div>
+</button>
+</h3>
+
+<div class="alert alert-info alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Use <kbd>tab</kbd> and <kbd>shift</kbd> + <kbd>tab</kbd> to navigate inputs
+</div>
+
+
+
+<br>
+<div class="row">
+<div class="col-sm-6">
+
+<div class="input-group">
+	<span class="input-group-text">F(y) = </span>
+	<input class="form-control input-sm" type="number" value="1" autofocus id="m1" onkeyup="calc()">
+	<span class="input-group-text">x + </span>
+	<input value="1" class="form-control input-sm" type="number" id="b1" onkeyup="calc()"></p>
+</div>
+
+</div>
+<div class="col-sm-6">
+<div class="input-group">
+	<span class="input-group-text">G(y) = </span>
+	<input class="form-control input-sm" type="number" value="1" id="m2" onkeyup="calc()">
+	<span class="input-group-text">x + </span>
+	<input value="1" class="form-control input-sm" type="number" id="b2" onkeyup="calc()"></p>
+</div>
+
+</div>
+</div>
+<br>
+
+<p id="answerPara" class="text-info"></p>
+<hr>
+<b>Formulas</b>
+<p>A line is <i>y = mx + b</i></p>
+<p>where <b>x</b> and <b>y</b> are coordinates, <b>m</b> is the slope, and <b>b</b> is the y-intercept</p>
+<p>so to calculate the point where the lines intersect we substitute and get</p>
+<p>x = (b1-b2)/(m2-m1)</p>
+<p>y = x*m1+b1 = x*m2+b2</p>
+
+</div>
+<script>
+
+window.onload = calc;
+
+function calc() {
+	let answerPara = document.getElementById("answerPara");
+	let m1 = parseFloat(document.getElementById("m1").value);
+	let b1 = parseFloat(document.getElementById("b1").value);
+	let m2 = parseFloat(document.getElementById("m2").value);
+	let b2 = parseFloat(document.getElementById("b2").value);
+
+	answerPara.innerHTML = "";
+	
+	if(isNaN(m1) || isNaN(b1) || isNaN(m2) || isNaN(b2) ) {
+		answerPara.innerHTML = "You are missing an input";
+		return;
+	}
+	if(m1 == m2 && b1 == b2) {
+		answerPara.innerHTML = "Slopes and Y-intercepts are the same, so lines are the same";
+		return;
+	} if(m1 == m2) {
+		answerPara.innerHTML = "Slopes are the same, so lines are parallel";
+		return;
+	} if(b1 == b2) {
+		answerPara.innerHTML = "Y-intercepts are the same, so they intersect at the Y-intercept.";
+		return;
+	}
+	
+	let x = (b1-b2)/(m2-m1);
+	let y = x*m1+b1;	
+	answerPara.innerHTML += "<i>Intersection at point (" + x + ", " + y + ")</i>";	
+}
+</script>
+</body>
+</html>
