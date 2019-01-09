@@ -25,7 +25,7 @@ todo: add tss and r^2 and r-->
 
 <style>
  * {
- 	text-align: center !important;
+	text-align: center !important;
 } ::selection {
 	background: #999;
 	color: #fff;
@@ -43,12 +43,9 @@ img {
   -ms-user-select: none;
 }
 
-.wrapper:hover .fa-stack{
+.btn:hover .fa-sync-alt {
     transition: .8s;
-    transform: rotate(180deg);
-}
-.wrapper{
-    display: inline-block;
+    transform: rotate(180deg);	
 }
 
 #answerPara {
@@ -81,20 +78,12 @@ img {
 <h3 class="display-4">
 <img id="logo" src="intersect-icon-simple.svg">
 Line Intersection Calculator
-<button class="btn btn-default btn-sm" id="refresh" title="clear inputs" onclick="$(':input').val('1');">
-<div class="wrapper">
-<span class="fa-stack fa-2x">
+<button class="btn btn-default btn-lg" id="refresh" title="clear inputs" onclick="$(':input').val('1');">
 <i class="fa fa-sync-alt"></i>
-</span>
-</div>
+
+
 </button>
 </h3>
-
-<div class="alert alert-info alert-dismissible">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  Use <kbd>tab</kbd> and <kbd>shift</kbd> + <kbd>tab</kbd> to navigate inputs
-</div>
-
 
 
 <br>
@@ -123,6 +112,12 @@ Line Intersection Calculator
 
 <p id="answerPara" class="text-info"></p>
 <hr>
+
+<div class="alert alert-info alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  Use <kbd>tab</kbd> and <kbd>shift</kbd> + <kbd>tab</kbd> to navigate inputs
+</div>
+
 <b>Formulas</b>
 <p>A line is <i>y = mx + b</i></p>
 <p>where <b>x</b> and <b>y</b> are coordinates, <b>m</b> is the slope, and <b>b</b> is the y-intercept</p>
