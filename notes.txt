@@ -1,0 +1,4 @@
+background image:
+from: https://undraw.co/search "designer girl"
+color: rgb(204,229,255)
+edited svg so that opacity="0.5"

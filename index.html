@@ -26,7 +26,14 @@ todo: add tss and r^2 and r-->
 <style>
  * {
 	text-align: center !important;
-} ::selection {
+}
+body {
+	background: #fff url("designer_girl.svg") no-repeat fixed center;
+}
+.card, .alert {
+	opacity: 0.9;
+}
+::selection {
 	background: #999;
 	color: #fff;
 }::-moz-selection {
@@ -70,6 +77,9 @@ img {
 		clear: both;
 		display: none;
 	}
+	body {
+		background: #fff;
+	}
 }
 </style>
 </head>
@@ -85,7 +95,7 @@ img {
 
 <br>
 <div class="row">
-	<div class="col-sm-6">
+	<div class="col-md-6">
 		<div class="input-group">
 			<span class="input-group-text">F(y) = </span>
 			<input class="form-control input-sm calc-input" type="number" value="1" autofocus id="m1">
@@ -93,7 +103,7 @@ img {
 			<input value="1" class="form-control input-sm calc-input" type="number" id="b1"></p>
 		</div>
 	</div>
-	<div class="col-sm-6">
+	<div class="col-md-6">
 		<div class="input-group">
 			<span class="input-group-text">G(y) = </span>
 			<input class="form-control input-sm calc-input" type="number" value="1" id="m2">
@@ -104,19 +114,23 @@ img {
 </div>
 <br>
 
-<p id="answerPara" class="text-info"></p>
+<div class="card card-body bg-white">
+<p id="answerPara" class="text-primary"></p>
+</div>
+
 <hr>
 
-<div class="alert alert-info alert-dismissible">
+<div class="alert alert-primary alert-dismissible">
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	Use <kbd>tab</kbd> and <kbd>shift</kbd> + <kbd>tab</kbd> to navigate inputs
 </div>
 
-<div class="card card-body bg-light">
+<div class="card card-body bg-white">
 <b>Formulas</b>
-<p>A line is <i>y = mx + b</i></p>
-<p>where <b>x</b> and <b>y</b> are coordinates, <b>m</b> is the slope, and <b>b</b> is the y-intercept</p>
-<p>so to calculate the point where the lines intersect we substitute and get</p>
+<p>The formula for a line is <b>y = mx + b</b></p>
+<p>where <b>x</b> and <b>y</b> are coordinates, <b>m</b> is the slope, and <b>b</b> is the y-intercept.</p>
+<p>So to calculate the point where the lines intersect we substitute and get</p>
+<p>y = m1x+b1 = m2x+b2</p>
 <p>x = (b1-b2)/(m2-m1)</p>
 <p>y = x*m1+b1 = x*m2+b2</p>
 </div>
@@ -125,14 +139,14 @@ img {
 <script>
 
 window.onload = function() {
-	$('.calc-input').change(function() {
-		calc();
-	});
+	$('.calc-input').change(calc);
 
 	$('#refresh').click(function() {
 		$('.calc-input').val('1');
 		calc();
 	});
+
+	$("#m1").select();
 
 	calc();
 };

@@ -6,9 +6,9 @@ a simple utility to calculate the intersection point of lines
 
 <a href="http://rgbstudios.org/intersect-calc">rgbstudios.org/intersect-calc</a>
 
-<hr>
+background image from https://undraw.co
 
-1.0.2
+<hr>
 
 by Justin Golden for RGB Studios
 
