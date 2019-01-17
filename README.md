@@ -1,17 +1,27 @@
 
-<img src="intersect-icon-simple.svg" width="64px">
-Intersect Calc - RGB Studios
+
+# Intersect <img src="intersect-icon-simple.svg" width="64px"> Calc &mdash; RGB Studios
 
 a simple utility to calculate the intersection point of lines
 
-<a href="http://rgbstudios.org/intersect-calc">rgbstudios.org/intersect-calc</a>
+http://rgbstudios.org/intersect-calc
 
-background image from https://undraw.co
+<img src="designer_girl.svg" width="300px">
+
+Features:
+
+enter the slopes and y-intercepts of two lines
+
+find the interception point (x,y), or find if the lines are the same or parallel
+
+displays formulas as well
+
+use <kbd>tab</kbd> and <kbd>shift</kbd> + <kbd>tab</kbd> to navigate the inputs
 
 <hr>
 
-by Justin Golden for RGB Studios
+background image from https://undraw.co
 
-justingolden21.github.io
+by [Justin Golden](https://justingolden21.github.io) for [RGB Studios](https://rgbstudios.org)
 
-rgbstudios.org
+contact: [contact@rgbstudios.org](mailto:contact@rgbstudios.org)
