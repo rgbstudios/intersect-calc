@@ -1,8 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <!--
-1.0.2
 todo: add tss and r^2 and r-->	
-<html>
+<html lang="en">
 <head>
 <title>Intersection Calc</title>
 
@@ -28,7 +27,7 @@ todo: add tss and r^2 and r-->
 	text-align: center !important;
 }
 body {
-	background: #fff url("designer_girl.svg") no-repeat fixed center;
+	background: #fff url('designer_girl.svg') no-repeat fixed center;
 }
 .card, .alert {
 	opacity: 0.9;
@@ -90,7 +89,7 @@ img {
 <h3 class="display-4">
 	<img id="logo" src="intersect-icon-simple.svg">
 	Line Intersection Calculator
-	<button class="btn btn-default btn-lg" id="refresh" title="Clear inputs"> <i class="fa fa-sync-alt"></i> </button>
+	<button class="btn" id="refresh" title="Clear inputs"> <i class="fa fa-sync-alt"></i> </button>
 </h3>
 
 <br>
@@ -120,10 +119,10 @@ img {
 
 <hr>
 
-<div class="alert alert-primary alert-dismissible">
+<!-- <div class="alert alert-primary alert-dismissible">
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
 	Use <kbd>tab</kbd> and <kbd>shift</kbd> + <kbd>tab</kbd> to navigate inputs
-</div>
+</div> -->
 
 <div class="card card-body bg-white">
 <b>Formulas</b>
@@ -138,26 +137,25 @@ img {
 </div>
 <script>
 
-window.onload = function() {
+$( ()=> {
 	$('.calc-input').change(calc);
 
-	$('#refresh').click(function() {
+	$('#refresh').click( ()=> {
 		$('.calc-input').val('1');
 		calc();
 	});
 
-	$("#m1").select();
-
 	calc();
-};
+	$('#m1').select();
+});
 
 function calc() {
 	$('#logo').toggleClass('aniamte');
 
-	let m1 = parseFloat($("#m1").val() );
-	let b1 = parseFloat($("#b1").val() );
-	let m2 = parseFloat($("#m2").val() );
-	let b2 = parseFloat($("#b2").val() );
+	let m1 = parseFloat($('#m1').val() );
+	let b1 = parseFloat($('#b1').val() );
+	let m2 = parseFloat($('#m2').val() );
+	let b2 = parseFloat($('#b2').val() );
 	
 	if(isNaN(m1) || isNaN(b1) || isNaN(m2) || isNaN(b2) ) {
 		$('#answerPara').html('You\'re missing an input');
@@ -168,8 +166,7 @@ function calc() {
 		$('#answerPara').html('Slopes are the same, so lines are parallel (never intersect)');
 	} else if(b1 == b2) {
 		$('#answerPara').html('Y-intercepts are the same, so they intersect at the Y-intercept (0, ' + + b1 + ')');
-	}
-	else {
+	} else {
 		let x = (b1-b2)/(m2-m1);
 		let y = x*m1+b1;
 		$('#answerPara').html('Intersection at point (' + x + ', ' + y + ')');
